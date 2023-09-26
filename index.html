@@ -34,7 +34,7 @@
 			
 			width: fit-content;
             
-"
+
 		}
 
 		.navMenu a {
@@ -64,8 +64,8 @@
 <body>
 
 	<nav class="navMenu  border">
-		<a id="home" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-house"></i> Home</a>
-		<a id="inbox" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-inbox"></i> Inbox</a>
+		<a id="home" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-house"></i> Unipa</a>
+		<a id="inbox" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-inbox"></i> Portale Studenti</a>
 		<a id="week" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-calendar-week"></i> Planner</a>
 		<a id="projects" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-briefcase"></i> Projects</a>
 		<a id="tasks" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-list-check"></i> Tasks</a>
@@ -93,9 +93,10 @@
 		function navigate(id) {
 
 			if (id == 'home')
-				window.open("https://example.com", '_blank').focus();
+				window.open("https://a3.unipa.it/profile", '_blank').focus();
+                
 			else if (id == "inbox")
-				window.open("https://example.com", '_blank').focus();
+				window.open("https://immaweb.unipa.it/immaweb/private/home/home.seam", '_blank').focus();
 			else if (id == "week")
 				window.open("https://example.com", '_blank').focus();
 			else if (id == "month")
