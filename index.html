@@ -1,128 +1,186 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+  <style>
+  /* Reset */
+  body, html{ background: #ffffff; color:#fff; font-family: 'Advent Pro', sans-serif; font-size: 16px; box-sizing: border-box;margin: 0;padding: 0;}*,*:before,*:after{ box-sizing: border-box; }h1,h2,h3,h4,h5,h6, p, ol, ul{margin: 0 0 1rem 0;padding: 0;}ol,ul{list-style-type: none;}img{height: auto;}h1{font-size: 4rem;} h2{font-size: 3rem;} h3{font-size: 2rem;} h4{font-size: 1rem;} h5{font-size: 0.8rem;} h6{font-size: 0.6rem;}a{text-decoration:none; text-align: center;}
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="Stilesheet.css">
-
-	<!-- Google Font -->
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
-
-	<!-------->
-
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-		}
+  .section{
+    position: relative;
+    z-index : 1;
+    width: 100%;
+    height: 100vh;
+  }
 
 
-		.navMenu {
-			font-family: 'Advent Pro', sans-serif;
-			padding: 4px;
-            margin: 7px auto;
-            margin-top: 1px;
-			text-align: center;
-			
-			width: fit-content;
-            
+  .title{
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 50%;
+    position: fixed;
+    top: 0; left:0;
+    margin-left: 25%;
+    transform: scale(1);
+    transition: all 1s cubic-bezier(.215, .61, .355, 1);
+    opacity: 0;
 
-		}
+  }
+ 
+  .section.in-page .title{
+    transform: scale(1.2);
+    opacity:1;
+  }
 
-		.navMenu a {
-			color: #272727;
+  .panel{
+    height: auto;
+    width: 100%;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+    color:#000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+ 
+
+  .title-med{font-size: 3.5rem;}
+  .subtitle{font-size: 1.5rem;color:#000000; max-width: 500px;padding-bottom: 10%;}
+  .orange-text{font-size: 2rem;color:#f56900; text-align: center;font-weight: bold;}
+
+
+  .header{
+    background-color: #000000; /*background*/
+    position: fixed;
+    top:0; 
+    left:0;
+    z-index: 9999;
+    width: 100%;
+  }
+  .header__content{ width: 100%;margin: 0 auto; display: flex;justify-content: center;}
+  .header__logo{padding: 4px 15px;height: 50px;}
+  .header__menu{padding-bottom: 0;margin-bottom: 0;}
+  .header__menu li{display: inline-block;
+  
+      color: #ffffff;
 			text-decoration: none;
 			text-transform: uppercase;
-			display: inline-block;
-			padding: 10px;
-		}
+			
+			padding: 0px;
 
-		.background {
-			background-color: #ece5f0;
-		}
+  }
+  .header__menu li a{color:#fff; opacity: 0.8;display: inline-block;padding: 16px;font-size: 15px;}
+  .header__menu li a:hover{color:#7c7c7c; }
+  .header__icons{width: 50px;}
 
-		.border {
-			border: 1.5px solid #cccccc;
 
-		}
+  @media (max-width: 768px) {
+    .header__menu{
+      position: absolute;
+      top:50px;
+      background-color: #000000; /*background hamburger*/
+      width: 100%;
+      height: 100vh;
+      height: 0vh;
+      overflow: hidden;
 
-		.navMenu a:hover {
+      
+    }
+    
 
-			color: #d09c0b;
-		}
-	</style>
+    .header__menu li{
+      width: 100%;
+      border-bottom: 1px solid #ffffff;
+      border-left: 0px;
+      border-right: 0;
+      text-align: center;
+
+    }
+    .menu-open .header__menu{height: 27.1vh;}
+
+    .icon-hamburger{height: 50px;width: 50px;margin-left: 20px;padding-top: 5px;}
+    .icon-hamburger span{height: 1px; width: 30px;background: #fff;position: relative;display: block;margin-top: 12px;transition: all 0.2s cubic-bezier(.215, .61, .355, 1);}
+    
+    .menu-open .icon-hamburger span:nth-child(1){transform: rotate(45deg) translateY(9px);}
+    .menu-open .icon-hamburger span:nth-child(2){transform: rotate(-45deg) translateY(-9px);}
+
+    .header__icons{display: flex;width: 57px;}
+
+  }
+
+
+
+  footer{height: 50vh;background: #eee;position: relative;z-index: 3;}
+  
+  </style>
+
 </head>
-
 <body>
 
-	<nav class="navMenu  border">
-		<a id="home" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-house"></i> Unipa</a>
-		<a id="inbox" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-inbox"></i> Portale Studenti</a>
-		<a id="week" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-calendar-week"></i> Drive Intesa</a>
-		<a id="projects" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-briefcase"></i> Drive Vivere</a>
-		<a id="tasks" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-list-check"></i> Tasks</a>
-		<a id="business" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-money-bill-wave"></i> Business</a>
-		<a id="knowledge" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-lightbulb"></i> Knowledge</a>
-		<a id="topics" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-layer-group"></i> Topics</a>
-		<a id="notes" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-book"></i> Notes</a>
-		<a id="media" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-bookmark"></i> Media</a>
-		<a id="resourses" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-wrench"></i> Resourses</a>
-		<a id="lifewiki" onclick="navigate(this.id)" href="#"> <i class="fa-solid fa-heart"></i> Lifewiki</a>
+  <header class="header">
+    <div class="header__content">
+      <ul class="header__menu">
+        <li><i class="fa-solid fa-house"></i><a href="https://a3.unipa.it/profile">Unipa</a></li>
+        <li><i class="fa-solid fa-calendar-week"></i><a href="https://immaweb.unipa.it/immaweb/private/home/home.seam">Portale Studenti</a></li>
+        <li><i class="fa-solid fa-calendar-week"></i><a href="https://bit.ly/3M83z4c">Drive Intesa</a></li>
+        <li><i class="fa-solid fa-calendar-week"></i><a href="">iPhone</a></li>
+        <li><i class="fa-solid fa-calendar-week"></i><a href="">Watch</a></li>
+      </ul>
+      <div class="header__icons">      
+          <div class="icon-hamburger">
+            <span></span>
+            <span></span>
+          </div>
+      </div>
+    </div>
+
+  </header>
+
+  
 
 
-
-	</nav>
-
-
-	<script>
-
-		let direction = "horizontal";
-		if (direction === "vertical") {
-			document.head.insertAdjacentHTML("beforeend", `<style>.navMenu a {display: block; text-align:left; margin:15px} i{width:15px; margin-right:5px} .navMenu{margin:3px}</style>`)
-		}
+   <script> 
 
 
-		function navigate(id) {
+  let item = document.querySelector('.icon-hamburger');
+  item.addEventListener("click", function() {
+    document.body.classList.toggle('menu-open');
+  });
 
-			if (id == 'home')
-				window.open("https://a3.unipa.it/profile", '_blank').focus();
-                
-			else if (id == "inbox")
-				window.open("https://immaweb.unipa.it/immaweb/private/home/home.seam", '_blank').focus();
-			else if (id == "week")
-				window.open("https://bit.ly/3M83z4c", '_blank').focus();
-			else if (id == "projects")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "month")
-				window.open("https://example.com", '_blank').focus();
-			
-			else if (id == "business")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "tasks")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "knowledge")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "topics")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "notes")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "media")
-				window.open("https://example.com", '_blank').focus();
-			else if (id == "resourses")
-				window.open("https://example.com3", '_blank').focus();
-			else if (id == "lifewiki")
-				window.open("https://example.com", '_blank').focus();
+   // elements
+   var elements_to_watch = document.querySelectorAll('.watch');
 
-		}
-	</script>
+   // callback 
+   var callback = function(items){
+     items.forEach((item) => {
+       if(item.isIntersecting){
+         item.target.classList.add("in-page");
+       } else{
+         item.target.classList.remove("in-page");
+       }
+     });
+   }
 
+   // observer
+   var observer = new IntersectionObserver(callback, { threshold: 0.6 } );
+
+   // apply
+   elements_to_watch.forEach((element) => {
+     observer.observe(element); 
+   });
+   
+   
+   
+   </script>
 
 </body>
-
 </html>
